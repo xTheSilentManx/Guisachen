@@ -1,0 +1,38 @@
+Grundbegriffe der objektorientierten Programmierung:
+Instanz/Objekt:
+
+Ein Objekt ist eine Instanz einer Klasse. Es ist ein konkretes Exemplar der Klasse und besitzt die Eigenschaften und Methoden, die in der Klasse definiert sind. Jedes Objekt hat seinen eigenen Zustand und kann unabhängig von anderen Objekten manipuliert werden.
+Klasse:
+
+Eine Klasse ist ein Bauplan oder eine Vorlage für Objekte. Sie definiert die Eigenschaften (Attribute) und das Verhalten (Methoden) der Objekte, die aus ihr erstellt werden. Klassen sind die grundlegenden Bausteine der OOP.
+Eigenschaft/Attribut:
+
+Eigenschaften oder Attribute sind Variablen, die den Zustand eines Objekts beschreiben. Sie werden in der Klasse definiert und enthalten Daten, die für die Objekte spezifisch sind.
+Methode:
+
+Eine Methode ist eine Funktion, die innerhalb einer Klasse definiert ist und das Verhalten der Objekte beschreibt. Methoden können auf die Attribute der Klasse zugreifen und diese manipulieren.
+self:
+
+self ist ein spezieller Parameter, der in Methoden von Klassen verwendet wird, um auf die Instanzvariablen und andere Methoden der Klasse zuzugreifen. Es ist ein Verweis auf das aktuelle Objekt, auf das die Methode angewendet wird.
+Konstruktorfunktion init:
+
+Der Konstruktor __init__ ist eine spezielle Methode, die automatisch aufgerufen wird, wenn ein neues Objekt einer Klasse erstellt wird. Sie wird verwendet, um die Attribute des Objekts zu initialisieren.
+Übergabe von Werten an eine Klasse und deren mögliche Datentypen:
+
+Beim Erstellen eines Objekts können Werte an den Konstruktor übergeben werden, um die Attribute des Objekts zu initialisieren. Diese Werte können verschiedene Datentypen haben, wie z.B. Integer, Float, String, Listen, Dictionaries, oder sogar andere Objekte.
+Vorteile der objektorientierten Programmierung:
+Modularität:
+
+OOP ermöglicht die Aufteilung von Programmen in kleinere, wiederverwendbare und unabhängige Module (Klassen), die leichter zu verstehen und zu warten sind.
+Wiederverwendbarkeit:
+
+Klassen und Objekte können in verschiedenen Programmen wiederverwendet werden, was den Entwicklungsaufwand reduziert und die Konsistenz fördert.
+Erweiterbarkeit:
+
+OOP unterstützt Vererbung, wodurch neue Klassen auf bestehenden Klassen basieren können. Dies erleichtert die Erweiterung und Anpassung von Software.
+Kapselung:
+
+Durch die Kapselung wird der Zugriff auf die inneren Zustände und Implementierungsdetails von Objekten eingeschränkt, wodurch die Integrität und Sicherheit der Daten gewährleistet wird.
+Polymorphismus:
+
+OOP ermöglicht Polymorphismus, bei dem eine Methode in verschiedenen Kontexten unterschiedlich implementiert werden kann, was die Flexibilität und Anpassungsfähigkeit von Software erhöht.
