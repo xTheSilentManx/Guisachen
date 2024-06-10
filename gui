@@ -1,0 +1,71 @@
+import tkinter as tk  # Importieren des Tkinter-Moduls für die GUI-Erstellung
+from tkinter import ttk  # Importieren des ttk-Moduls für erweiterte Widgets
+import json  # Importieren des JSON-Moduls zum Arbeiten mit JSON-Daten
+import pyotp  # Importieren des pyotp-Moduls für die Erstellung von OTPs
+
+class Gui(tk.Tk):  # Definition der Gui-Klasse, die von tk.Tk erbt
+    def __init__(self):  # Initialisierungsmethode der Gui-Klasse
+        super().__init__()  # Aufruf der Initialisierungsmethode der Elternklasse
+        self.geometry("1280x720")  # Festlegen der Fenstergröße
+        self.title("Bank APP")  # Festlegen des Fenstertitels
+        self.createWidgets()  # Aufruf der Methode zum Erstellen der Widgets
+
+    def createWidgets(self):  # Methode zum Erstellen der GUI-Elemente
+        # Stilkonfigurationen für verschiedene Widgets
+        style = ttk.Style()
+        style.configure('TFrame', background='lightgreen', padding=5)
+        style.configure('TLabel', background='lightgreen', foreground='blue', padding=5)
+        style.configure('TEntry', padding=5)
+
+        # Überschrift im Fenster
+        headline = tk.Label(self, text='Herzlich Willkommen in der Bank APP!!!', font=32)
+        headline.pack()
+
+        # Frame für die IBAN-Eingabe
+        iban_frame = ttk.Frame(self, style="TFrame")
+        iban_frame.pack(pady=10)
+
+        # Label und Entry-Widget für die IBAN
+        iban_label = ttk.Label(iban_frame, text="Bitte geben Sie Ihre IBAN ein:", style='TLabel')
+        iban_label.pack(side=tk.LEFT)
+
+        self.iban_entry = ttk.Entry(iban_frame, style='TEntry')
+        self.iban_entry.pack(side=tk.RIGHT)
+
+        # Button zum Absenden der IBAN
+        submit_button = ttk.Button(self, text="IBAN überprüfen", command=self.submit_iban)
+        submit_button.pack()
+
+    def submit_iban(self):  # Methode zum Überprüfen der eingegebenen IBAN
+        iban = self.iban_entry.get()  # Abrufen der eingegebenen IBAN
+        if iban:  # Überprüfen, ob eine IBAN eingegeben wurde
+            user = User(iban)  # Erstellen eines User-Objekts
+            if user.is_valid():  # Überprüfen, ob die IBAN gültig ist
+                otp = user.generate_otp()  # Generieren eines OTPs
+                print(f"Eingegebene IBAN: {iban}, OTP: {otp}")  # Ausgabe der IBAN und des OTPs
+            else:
+                print("Ungültige IBAN.")  # Ausgabe einer Fehlermeldung bei ungültiger IBAN
+        else:
+            print("Bitte geben Sie eine IBAN ein.")  # Aufforderung zur Eingabe einer IBAN
+
+class User:  # Definition der User-Klasse
+    def __init__(self, iban):  # Initialisierungsmethode der User-Klasse
+        self.iban = iban  # Speichern der IBAN
+        self.data = self.get_data()  # Abrufen der Benutzerdaten
+
+    def get_data(self):  # Methode zum Abrufen der Benutzerdaten
+        with open('userData.json', 'r') as file:  # Öffnen der JSON-Datei
+            all_user_data = json.load(file)  # Laden der Daten aus der JSON-Datei
+            return all_user_data.get(self.iban)  # Abrufen der Daten für die gegebene IBAN
+
+    def is_valid(self):  # Methode zur Überprüfung der Gültigkeit der IBAN
+        return self.data is not None  # Überprüfen, ob Daten für die IBAN vorhanden sind
+
+    def generate_otp(self):  # Methode zur Generierung eines OTPs
+        secret_key = pyotp.random_base32()  # Generieren eines geheimen Schlüssels
+        totp = pyotp.TOTP(secret_key)  # Erstellen eines TOTP-Objekts
+        return totp.now()  # Generieren und Zurückgeben des aktuellen OTPs
+
+if __name__ == "__main__":  # Überprüfen, ob das Skript direkt ausgeführt wird
+    app = Gui()  # Erstellen eines Gui-Objekts
+    app.mainloop()  # Starten der Tkinter-Ereignisschleife
