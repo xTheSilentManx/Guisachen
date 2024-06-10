@@ -1,0 +1,44 @@
+
+  "DE1":{
+    "firstname": "Jonatan",
+    "lastname": "Jaehnke",
+    "money": 5245.57,
+    "dispo": false,
+    "kredit": 0,
+    "password": 321
+  },
+  "DE2": {
+    "firstname": "Adrian",
+    "lastname": "Lösing",
+    "money": -35841565.95,
+    "dispo": false,
+    "kredit": 0,
+    "password": 123
+  },
+  "DE3": {
+    "firstname": "Oliver" ,
+    "lastname": "Demberg" ,
+    "money": 216.19,
+    "dispo": false,
+    "kredit": 0,
+    "password": "CB#Amh9ptr#H6Wj23PSMG%a!e7Lzd$"
+  },
+
+  "DE4": {
+    "firstname": "Jonas" ,
+    "lastname": "Rambusch" ,
+    "money": 1.0,
+    "dispo": false,
+    "kredit": 0,
+    "password": "zHDqP$P*v^ZX>wM*gQNR>oCG56X@%"
+  },
+
+  "DE5": {
+    "firstname": "Soroush" ,
+    "lastname": "Saberi" ,
+    "money": 0.10,
+    "dispo": false,
+    "kredit": 0,
+    "password": "password"
+  }
+}
